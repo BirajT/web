@@ -1,0 +1,119 @@
+import React, { useState } from "react";
+import { BsCart2 } from "react-icons/bs";
+
+function App() {
+  const cetaphilProducts = [
+    {
+      image: "https://via.placeholder.com/150", // replace with your image
+      title: "Cetaphil Gentle Skin Cleanser",
+      description: "A gentle, non-irritating formula that soothes skin.",
+      price: "$12",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      title: "Cetaphil Moisturizing Lotion",
+      description: "Lightweight lotion that hydrates and protects dry skin.",
+      price: "$15",
+    },
+    {
+      image: "https://via.placeholder.com/150",
+      title: "Cetaphil Daily Facial Moisturizer SPF 15",
+      description: "Protects and hydrates sensitive skin daily with SPF.",
+      price: "$18",
+    },
+  ];
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prev) => [...prev, product]);
+  };
+
+  return (
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+      <h1>Cetaphil Skincare Products</h1>
+
+      {/* product grid */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {cetaphilProducts.map((product, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              padding: "16px",
+              maxWidth: "250px",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+              textAlign: "center",
+              backgroundColor: "#fff",
+              transition: "transform 0.2s ease",
+            }}
+          >
+            <img
+              src={product.image}
+              alt={product.title}
+              style={{
+                width: "150px",
+                height: "150px",
+                objectFit: "contain",
+                marginBottom: "12px",
+                borderRadius: "6px",
+              }}
+            />
+            <h3 style={{ fontSize: "1.2rem", color: "#333" }}>
+              {product.title}
+            </h3>
+            <p
+              style={{
+                fontSize: "0.9rem",
+                color: "#555",
+                marginBottom: "12px",
+                minHeight: "48px",
+              }}
+            >
+              {product.description}
+            </p>
+            <h4 style={{ fontWeight: "bold", color: "#222" }}>
+              {product.price}
+            </h4>
+            <button
+              onClick={() => addToCart(product)}
+              style={{
+                backgroundColor: "#007bff",
+                color: "white",
+                borderRadius: "10px",
+                padding: "8px 14px",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                justifyContent: "center",
+                border: "none",
+                margin: "0 auto",
+              }}
+            >
+              <BsCart2 /> Add to cart
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* cart display */}
+      <h2 style={{ marginTop: "30px" }}>🛒 Cart</h2>
+      {cart.length === 0 ? (
+        <p>No items in cart.</p>
+      ) : (
+        <ul>
+          {cart.map((item, i) => (
+            <li key={i}>
+              {item.title} - {item.price}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default App;

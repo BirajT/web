@@ -1,0 +1,38 @@
+<table border="1" cellpadding="10" cellspacing="0" >
+    <caption>ABC organization</caption>
+        <thead>
+            <tr>
+                <th rowspan="2" scope="col">Emp No</th>
+                <th rowspan="2" scope="col">Name</th>
+                <th colspan="2"><br><br><br>Annual Salary Details</th>
+        
+                <th rowspan="2" scope="col">Total</th>
+            </tr>
+            <tr>
+                <th scope="col">Basic</th>
+                <th scope="col">Tax<br>   Deduction</th>
+         
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Emp001</td>
+                <td>Ram Sharma</td>
+                <td>Rs 120000</td>
+                <td>6%</td>
+                <td>112800</td>
+            <tr>
+                <td>Emp002</td>
+                <td>Sharmila Rai</td>
+                <td>Rs 140000</td>
+                <td>6%</td>
+                <td>131600</td>
+            </tr>
+            <tr>
+                <td>Emp003</td>
+                <td>Nirmala Shrestha</td>
+                <td>Rs 15000</td>
+                <td>6%</td>
+                <td>108100</td>
+        </tbody>
+    </table>

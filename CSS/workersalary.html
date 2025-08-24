@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Compare(){
+    const name1=document.getElementById("name1").value;
+    const add1=document.getElementById("add1").value;
+    const sal1=parseFloat(document.getElementById("sal1").value);
+
+    const name2=document.getElementById("name2").value;
+    const add2=document.getElementById("add2").value;
+    const sal2=parseFloat(document.getElementById("sal2").value);
+
+    const name3=document.getElementById("name3").value;
+    const add3=document.getElementById("add3").value;
+    const sal3=parseFloat(document.getElementById("sal3").value);
+let gt;
+    if(sal1<sal2 && sal3<sal2)
+{
+    gt=sal2;
+    document.getElementById("na").innerText="Name= "+name2;
+    document.getElementById("add").innerText="Address= "+add2;
+    document.getElementById("sal").innerText="Salary= "+sal2;
+}
+    else if(sal2<sal1 && sal3<sal1)
+{
+    gt=sal1;
+     document.getElementById("na").innerText="Name= "+name1;
+    document.getElementById("add").innerText="Address= "+add1;
+    document.getElementById("sal").innerText="Salary= "+sal1;
+}
+else{
+    gt=sal3;
+     document.getElementById("na").innerText="Name= "+name3;
+    document.getElementById("add").innerText="Address= "+add3;
+    document.getElementById("sal").innerText="Salary= "+sal3;
+}
+
+
+    }
+</script>
+<body>
+    <h1>Worker Information : </h1>
+    <h2>Worker 1:</h2>
+    <label for="name1" >Enter Name :</label><br>
+    <input type="text" id="name1"><br>
+    <label for="add1" >Enter Address :</label><br>
+    <input type="text" id="add1"><br>
+    <label for="sal1" >Enter Salary</label><br>
+    <input type="number" id="sal1"><br>
+      <h2>Worker 2:</h2>
+    <label for="name2">Enter Name :</label><br>
+    <input type="text" id="name2"><br>
+    <label for="add2" >Enter Address :</label><br>
+    <input type="text" id="add2"><br>
+    <label for="sal2" >Enter Salary</label><br>
+    <input type="number" id="sal2"><br>
+      <h2>Worker 3:</h2>
+    <label for="name3" >Enter Name :</label><br>
+    <input type="text" id="name3"><br>
+    <label for="add3">Enter Address :</label><br>
+    <input type="text" id="add3"><br>
+    <label for="sal3">Enter Salary</label><br>
+    <input type="number" id="sal3"><br><br>
+    <button onclick="Compare()">Compare</button>
+    <h3 id="na"></h3>
+    <h3 id="add"></h3>
+    <h3 id="sal"></h3>
+</body>
+</html>
