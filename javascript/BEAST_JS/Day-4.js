@@ -8,7 +8,7 @@ let Dog={
         breed:"Labrador",
         furType:"Short",
         temperament:"Friendly",
-        color:""
+        
     },
 };
 
@@ -27,7 +27,14 @@ console.log(Dog);
 
 console.log(Dog.hasOwnProperty('height'));
 console.log(Dog.features.color)
-//console.log(Dog.keys());
+
 //values
 //entries
+
+ const result=Object.keys(Dog)
+console.log(result);
+
+const Answer=Object.values(Dog)
+console.log(Answer);
+//D
 
