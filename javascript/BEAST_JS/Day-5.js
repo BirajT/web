@@ -210,3 +210,18 @@ else{
 
 }
 hn(5,6,7);
+
+
+//callback function
+// function parents(word)
+// {
+//     console.log("i am parrent");
+//     word()
+// }
+
+// function childs()
+// {
+//     console.log("call from p");
+// }
+
+// parents(childs)
