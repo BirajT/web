@@ -13,6 +13,7 @@ console.log(Users[Users.length-1])
 Users[1]="USers222"                         //modify
 console.log(Users[1]);
 console.log(Users);
+console.log(Users.at(-1));
 
 // Create a program where:
 // You have an array of objects called students.
@@ -63,4 +64,5 @@ function getAverage()
 addStudent("Araj",21,99);
 addStudent("Sam",21,50);
 addStudent("Sandesh",22,98);
+
 
