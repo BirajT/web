@@ -65,4 +65,65 @@ addStudent("Araj",21,99);
 addStudent("Sam",21,50);
 addStudent("Sandesh",22,98);
 
+// Employee Manager
+// Create an employees array.
+// Each object should have id, name, department, salary.
+// Write functions:
+// addEmployee(id, name, department, salary) → adds a new employee.
+// listEmployees() → prints all employees.
+// findEmployeeById(id) → returns employee details.
+// getAverageSalary() → calculates average salary.
 
+let Employees=[];
+
+function addEmployee(id,name,department,salary)
+{
+    Employee={
+        id:0,
+        name:"",
+        department:"",
+        salary:0
+    }
+    Employee.id=id;
+    Employee.name=name;
+    Employee.department=department;
+    Employee.salary=salary;
+    Employees.push(Employee)
+    listsEmployees()
+}
+
+function listsEmployees()
+{
+    for(i=0;i<=Employees.length-1;i++)
+    {
+    console.log(Employees[i]);
+    }
+    getAverageSalary();
+}
+
+function findEmployeeById(id)
+{
+   for(i=0;i<=Employees.length-1;i++)
+   {
+    if(Employees[i].id==id)
+    {
+        console.log(Employees[i]);
+    }
+   }
+
+}
+
+function getAverageSalary()
+{
+    let Avg=0;
+    for(i=0;i<=Employees.length-1;i++)
+    {
+    Avg=Avg+Employees[i].salary
+    }
+    console.log("Average Salary = ",Avg);
+}
+addEmployee(6571,"Biraj","Block-B",205000)
+addEmployee(6555,"Araj","Block-B",60000)
+addEmployee(7351,"Sandesh","Block-A",105000)
+addEmployee(5643,"Bigyan","Block-C",108000)
+findEmployeeById(7351);
