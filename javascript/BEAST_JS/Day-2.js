@@ -1,3 +1,5 @@
+//Behaviour of data
+
 console.log("Hello World") 
 
 //Data Behaviour:
