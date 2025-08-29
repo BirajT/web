@@ -88,3 +88,42 @@ console.log(numbers);
 let b=numbers.find(numbers=>numbers%2===0)
 console.log(b);
 console.log("a");
+
+//sort()
+let no=[2,7,3,1,8,5]
+let name=["Ram","Hari","Sam","Gita"]
+no.sort()
+console.log(no);
+
+no.sort((a,b)=>{
+    return b-a;
+
+})
+console.log(no);
+
+name.sort()
+console.log(name);
+name.sort((a,b)=>{
+    return b.localeCompare(a)
+})
+
+no.reverse()
+console.log(no);
+name.reverse()
+console.log(name);
+name.reverse()
+console.log(name);
+
+//some => if any value match condition in array result=true
+//every =>if all value satisfies condition result =true
+
+const ev=no.some((value)=>
+{
+    return value%2===0
+})
+console.log(ev);
+const sm=no.some((value)=>
+{
+    return value%2===0
+})
+console.log(sm);
