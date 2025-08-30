@@ -61,7 +61,8 @@
         Student.grade=grade;
         Student.marks=marks;
         Student.sec=sec;
-        Students.push(Student)
+        Students.push(Student)      
+         
         console.log(Student.name);
         console.log(Student.grade);
         console.log(Student.marks);
@@ -78,6 +79,7 @@
             Avg=sum/Student.marks.length;
             console.log("average=",Avg);
             Student.Avg=Avg
+             
 
             if(Avg>=0 && Avg<=30)
             {
@@ -95,7 +97,7 @@
             {
                 Student.score="B"
             }
-            else if(Avg>91 && Avg<100)
+            else if(Avg>=91 && Avg<=100)
             {
                 Student.score="A"
             }
@@ -103,9 +105,10 @@
                 console.log("please input between 0 to 100");
 
             }
-
+            console.log(`Name-Grade-Marks-Section-Score_Average`);
             console.log(`${Student.name}-${Student.grade}-${Student.marks}-${Student.sec}-${Student.score}-${Student.Avg}`);
         }
+         
         
         
 
@@ -114,13 +117,6 @@
     input("Sandesh",12,[60,70,77,87,88],"Sagarmatha")
     
 
+    let passedStudents = Students.filter(stu => stu.Avg >= 40);
+    console.log("Passed Students: ",passedStudents);
     
-    // for(i=0;i<Students.length;i++)
-    // {
-    //     console.log(Students[i])
-    
-    // let a=Students[i].marks.filter((value,index,arr)=>{
-    //             return value>=32
-    //     })
-    //     console.log("a=",a);
-    // }
