@@ -2,6 +2,7 @@
 //if
 //elseif
 //else
+//Switch case
 
 
     function salary(sal)
@@ -19,7 +20,7 @@
         }
         
     }
-    salary(60000)
+    //salary(60000)
 
 
     //switch case
@@ -37,11 +38,11 @@
         case 5:
         case 6:
         case 7:{
-            console.log("work day");     
+            //console.log("work day");     
             break;       
         }      
         default:{
-            console.log("Enter betweeen 1-7");
+           // console.log("Enter betweeen 1-7");
             break;
         }      
     }
