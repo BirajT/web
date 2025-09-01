@@ -23,3 +23,15 @@
 //git remote add origin <repo_url>-> connect local and remote repositories
 //git remote remove origin => removes remote repo
 //git push origin main
+
+
+//*steps to push in git repository
+//git init
+//git add .
+//git commit -m"filename"
+//git branch
+//git remote add origin <repo_url>->
+//git push origin main
+
+
+
