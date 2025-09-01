@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greatest number </title>
+</head>
+<script>
+    function Greatest(){
+    const num1=parseFloat(document.getElementById("num1").value);
+    const num2=parseFloat(document.getElementById("num2").value);
+    const num3=parseFloat(document.getElementById("num3").value);
+    let greatest;
+    if(num1<num2 && num3<num2)
+{
+    greatest=num2;
+}
+else if(num1<num3 && num2<num3)
+{
+    greatest=num3;
+}
+else{
+    greatest=num1;
+}
+document.getElementById("result").innerText="The Greatest number is :"+greatest;
+    }
+</script>
+<body>
+    <h1>Greatest number</h1>
+    <label for="num1">Enter first number: </label><br>
+    <input type="number" id="num1"><br><br>
+    <label for="num2">Enter second number: </label><br>
+    <input type="number" id="num2"><br><br>
+    <label for="num3">Enter third number</label><br>
+    <input type="number" id="num3"><br><br>
+    <button onclick="Greatest()">Result</button>
+    <h2 id="result"></h2>
+
+    
+</body>
+</html>
