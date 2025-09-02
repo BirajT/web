@@ -26,12 +26,21 @@
 
 
 //*steps to push in git repository
+
 //git init
 //git add .
 //git commit -m"filename"
-//git branch
-//git remote add origin <repo_url>->
 //git push origin main
 
+//git branch
+//git remote add origin <repo_url>->
+//git push origin <branch name>
+//git pull origin <branch-name>
+ 
+//git branch ->list all available branches
+// git branch <branch_name> ->create new branch
+// git checkout <branch_name> ->switch branch
+// git checkout -b <new_branch_name> => create new branch +switch
+// git branch -d <branch_name> => delete branch locally
 
 

@@ -9,7 +9,7 @@ let y="30"
 
 let sum = a + b;      
 let diff = a - b;     
-let prod = a * b;     
+let prod = a * b;    
 let div = b / a;      
 let mod = b % a;      
 
