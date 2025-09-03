@@ -15,7 +15,7 @@ greet()
 // const y=20;       //(cannot be access before initializtion tdz(temporal dead zone)
 // console.log(y);
 
-console.log(z);
+ console.log(z);
 const z=20;       //(cannot be access before initializtion tdz(temporal dead zone)
 console.log(z);
 
