@@ -87,3 +87,38 @@ counting.reset()
 //Account(acc_name,initial_amt)
 //balance,acc name
 //deposit(amt),withdraw,bal_inq,get_detail
+
+
+function Bank()
+{
+    Banks=[]
+    let Acc_holder={
+    name:"",
+    amt:0
+};
+    return {Create_acc : function(name,amt=0)
+    {
+        Acc_holder.name=name;
+        Acc_holder.acc=acc;
+        Banks.push(Acc_holder)
+    }
+    }
+      function balance(acc)
+    {
+        console.log(Acc_holder.name);
+        console.log(Acc_holder.amt);
+    }
+
+    function deposit(a)
+    {
+        Acc_holder.amt+=a;
+        console.log(`Your deposit of NPR ${a} has been successful.`)
+    }
+    function withdraw(b)
+    {
+        Acc_holder.amt-=b
+        console.log(`Your withdrawal of NPR ${b} has been successful.`);
+    }
+
+}
+let aa=Bank("Biraj",1000)
