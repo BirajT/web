@@ -22,3 +22,68 @@ var i=30;
 console.log(g,h,i);
 }
 console.log(i);     //var can be access outside block
+
+//lexical scope
+function lexical()
+{
+    let x="Parent"
+    function child()
+    {
+        let y="child"
+        console.log(x);
+        console.log(y);
+    }
+    child()
+}
+lexical()
+
+// // closure
+// function counter()
+// {
+//     let count=0;
+//     return function child()
+//     {
+//         count+=1
+//         console.log(count);
+//     }
+// }
+// counter()
+// let aa=counter()
+// let bb=counter()
+// aa()
+// aa()
+// bb()
+// bb()
+
+function counter()
+{
+    let count=0
+    return {
+        increment:function()
+        {
+            count+=1
+            console.log(count);
+        },
+        decrement:function()
+        {
+            count-=1
+            console.log(count);
+        },
+        reset:function()
+        {
+            count=0
+            console.log(count);
+        }
+
+    };
+}
+const counting=counter()
+counting.increment()
+counting.increment()
+counting.decrement()
+counting.decrement()
+counting.reset()
+
+//Account(acc_name,initial_amt)
+//balance,acc name
+//deposit(amt),withdraw,bal_inq,get_detail
