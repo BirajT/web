@@ -68,4 +68,3 @@ let b=a.map(function(value,index,arr)
 console.log(b);
 
 let num=[5, 10, 15, 20, 25]
-
