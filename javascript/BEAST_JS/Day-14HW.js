@@ -1,4 +1,8 @@
-Bank=[];
+//Question
+//Account(acc_name,initial_amt)
+//balance,acc name
+//deposit(amt),withdraw,bal_inq,get_detailBank=[];
+Bank=[]
 function Account(acc_name,initial_amt){
     
     let obj={
