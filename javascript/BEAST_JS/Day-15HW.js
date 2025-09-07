@@ -29,6 +29,7 @@ class Teacher{
 const t1=new Teacher(6571,"Biraj","Kathmandu",200000,"Computer");
 t1.display()
 class Student extends Teacher{
+    id;
     faculty;
     fees;
 
