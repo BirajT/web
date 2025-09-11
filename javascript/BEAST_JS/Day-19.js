@@ -14,20 +14,20 @@ class BankAccount{
     withdraw(num)
     {
         try{
-        if(this.balance>=num)
+        if(this.balance<num)
         {
-            this.balance-=num;
-            console.log(`Your NPR ${num} has been credited`);
+            throw new Error("Insufficient Balance")
         }
         else{
-             throw new Error("Insufficient Balance!");
-            }
+            this.balance-=num
         }
+    }
         catch(error) {
-        this.balance+=1000;
-        this.withdraw(num)
-
-
+            console.log(error.message);
+            console.log("Adding 1000 balance");
+        }
+        finally{
+            console.log("Transaction completed");
         }
     }
 }

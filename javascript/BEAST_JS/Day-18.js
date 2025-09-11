@@ -15,7 +15,3 @@ function divide(a, b) {
     }
 }
 
-// Example calls
-divide(10, 2);  // Works fine
-console.log("------");
-divide(10, 0);  // Throws error
