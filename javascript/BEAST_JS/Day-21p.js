@@ -9,3 +9,8 @@ const a=setInterval(()=>{
     }
     count++;
 })
+
+//Write a program that prints "Hello World" after 5 seconds only once.
+const b=setTimeout(()=>{
+    console.log("Hello World");
+},5000);
