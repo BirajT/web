@@ -47,20 +47,21 @@ greet("Ram");
 var add = function (num1, num2) {
     return num1 + num2;
 };
-console.log(add);
-add(5, 6);
-//enum
-// enum Role{
-//     ADMIN='Admin',
-//     SUPER_ADMIN='SUPER_ADMIN',
-//     USER='USER'
-// }
-// console.log(Role.ADMIN);
-// console.log(Role.USER);
+console.log(add(5, 6));
+var Role;
+(function (Role) {
+    Role["ADMIN"] = "Admin";
+    Role["SUPER_ADMIN"] = "SUPER_ADMIN";
+    Role["USER"] = "USER";
+})(Role || (Role = {}));
+console.log(Role.ADMIN); // Admin
+console.log(Role.USER); // USER
 var Person = /** @class */ (function () {
     function Person(name, age) {
         this.name = name;
         this.age = age;
+        console.log(this.name);
+        console.log(this.age);
     }
     return Person;
 }());
