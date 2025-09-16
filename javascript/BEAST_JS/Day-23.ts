@@ -31,15 +31,14 @@ d=false;
 //Array
 const numbers:number[]=[1,2,3,4]
 const strings: Array<string>=["abc","cde"]
-
-numbers.push(50)
+numbers.push(50);
 
 // tuples
 const tuple: [string,boolean,number]=['abc',false,3]
 
 
 //object
-type User ={
+type User ={ 
     name:string;
     email:string;
     gender?:string;
@@ -67,19 +66,18 @@ greet("Ram")
 const add=(num1:number,num2:number):number =>{
     return num1+num2
 }
-console.log(add);
+console.log(add(5,6));
 
 
-add(5,6);
 
-//enum
-// enum Role{
-//     ADMIN='Admin',
-//     SUPER_ADMIN='SUPER_ADMIN',
-//     USER='USER'
-// }
-// console.log(Role.ADMIN);
-// console.log(Role.USER);
+
+enum Role {
+    ADMIN = 'Admin',
+    SUPER_ADMIN = 'SUPER_ADMIN',
+    USER = 'USER'
+}
+console.log(Role.ADMIN); // Admin
+console.log(Role.USER);  // USER
 
 
 
@@ -92,6 +90,8 @@ class Person{
     {
         this.name=name;
         this.age=age;
+        console.log(this.name);
+        console.log(this.age);
     }
 }
 
