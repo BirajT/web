@@ -15,3 +15,16 @@ greet("Biraj")
 const stu=new Student("bir",32)
 stu.display();
 
+//set
+let a=[1,2,2,3,4,4,5,5,6,6,6,6,7,8]     //removes duplicates
+let numbers= new Set(a)
+console.log(numbers);
+
+
+//Map
+let myMap=new Map()
+myMap.set("name","Biraj")
+myMap.set("Age",23)
+
+console.log(myMap.get("name"));
+console.log(myMap.get("Age"));
