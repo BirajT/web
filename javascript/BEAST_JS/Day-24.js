@@ -4,3 +4,15 @@ var sum = a.reduce(function (prev, value, index, arr) {
     return prev + value;
 }, 0);
 console.log("sum = ", sum);
+var wrapper = function (value) {
+    if (Array.isArray(value)) {
+        return value;
+    }
+    return [value];
+};
+var stringBox = {
+    value: "box"
+};
+var numberBox = {
+    value: "box"
+};
