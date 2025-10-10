@@ -26,7 +26,7 @@ export class Student{
         this.age=age
     }
 
-    display()
+     display()
     {
         console.log(this.name);
         console.log(this.age);
