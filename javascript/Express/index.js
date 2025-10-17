@@ -32,14 +32,14 @@ app.get('/users',(req,res)=>{
 });
 
 //dynamic route {req,params}
-app.get ('/users/:id',(req,res)=>{
-    console.log(req.params);
-    const params=req.params
+// app.get ('/users/:id',(req,res)=>{
+//     console.log(req.params);
+//     const params=req.params
     
-    res.json({
-        data:{id:params.id,name:params.name,email:"abc@gmail.com"}
-    })
-    })
+//     res.json({
+//         data:{id:params.id,name:params.name,email:"abc@gmail.com"}
+//     })
+//     })
 
 app.post ('/users',(req,res)=>{
   res.status(201).json({
@@ -63,14 +63,15 @@ app.post ('/users',(req,res)=>{
   })
     
  //product
- app.get ('/products/:id',(req,res)=>{
-    console.log(req.params);
-    const params=req.params
-    
-    res.json({
-        data:{id:params.id,name:params.name,}
-    })
-    })
+    app.get('/products', (req, res) => {
+  res.json({
+    data: [
+      { id: 1, name: "Laptop" },
+      { id: 2, name: "Headphones" },
+    ],
+    message: "Products fetched"
+  });
+});
 
 app.post ('/products',(req,res)=>{
   res.status(201).json({
