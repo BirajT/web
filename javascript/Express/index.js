@@ -62,7 +62,7 @@ app.post ('/users',(req,res)=>{
     })
   })
     
- //product
+ //product(get,post,put delete)
     app.get('/products', (req, res) => {
   res.json({
     data: [
