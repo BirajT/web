@@ -1,6 +1,7 @@
 import http from 'http';
 import express from 'express'
 
+import userRoutes from './routes/user.routes.js'
 
 const PORT=8080
 
@@ -21,46 +22,7 @@ app.get('/about',(req,res)=>{
     res.send('<h1>About_page')
 })
 
-app.get('/users',(req,res)=>{
-    res.json({
-        data:[
-            {id:1,name:"abc",email:"abc@gmail.com"},
-            {id:2,name:"xyz",email:"xyz@gamil.com"},
-        ],
-        message:'users fetched'
-    });
-});
 
-//dynamic route {req,params}
-// app.get ('/users/:id',(req,res)=>{
-//     console.log(req.params);
-//     const params=req.params
-    
-//     res.json({
-//         data:{id:params.id,name:params.name,email:"abc@gmail.com"}
-//     })
-//     })
-
-app.post ('/users',(req,res)=>{
-  res.status(201).json({
-    message:'Account created'
-  })
-})
-     
-
-  app.put('/users/:id',(req,res)=>{
-    const{id}=req.params
-    res.status(200).json({
-        message:`Profile updated for user id ${id}`
-    })
-  })
-
-  app.delete('/users/:id',(req,res)=>{
-    const{id}=req.params
-    res.status(200).json({
-        message:`profile deleted for user id ${id}`
-    })
-  })
     
  //product(get,post,put delete)
     app.get('/products', (req, res) => {
@@ -94,7 +56,8 @@ app.post ('/products',(req,res)=>{
     })
   })
 
-     
+    //using routes
+    app.use('/users',userRoutes) 
 
 
 
