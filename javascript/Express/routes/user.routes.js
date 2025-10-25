@@ -1,44 +1,16 @@
 import express from 'express'
+import { getall,getById,create,update,remove} from '../controller/user.controller.js';
 const router = express.Router()
 
-router.get('/',(req,res)=>{
-    res.json({
-        data:[
-            {id:1,name:"abc",email:"abc@gmail.com"},
-            {id:2,name:"xyz",email:"xyz@gamil.com"},
-        ],
-        message:'users fetched'
-    });
-});
+router.get('/',getall);
 
 //dynamic route {req,params}
-router.get ('/:id',(req,res)=>{
-    console.log(req.params);
-    const params=req.params
-    
-    res.json({
-        data:{id:params.id,name:params.name,email:"abc@gmail.com"}
-    })
-    })
+router.get ('/:id',getById)
 
-router.post ('/',(req,res)=>{
-  res.status(201).json({
-    message:'Account created'
-  })
-})
+router.post ('/',create);
      
 
-router.put('/:id',(req,res)=>{
-    const{id}=req.params
-    res.status(200).json({
-        message:`Profile updated for user id ${id}`
-    })
-  })
+router.put('/:id',update)
 
-router.delete('/:id',(req,res)=>{
-    const{id}=req.params
-    res.status(200).json({
-        message:`profile deleted for user id ${id}`
-    })
-  })
+router.delete('/:id',remove)
   export default router

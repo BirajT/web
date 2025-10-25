@@ -6,13 +6,15 @@ import productRoutes from './routes/product.routes.js'
 
 const PORT=8080
 
+
 //creating express instance
 const app=express()
 
 //creating server
 const server =http.createServer(app);
 
-
+//parse req body
+app.use(express.json())
 
 //request handler for url /
 app.get('/', (req,res)=>{
