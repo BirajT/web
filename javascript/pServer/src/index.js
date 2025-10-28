@@ -1,14 +1,12 @@
-
 import express from 'express'
-import userRoutes from './routes/user.router.js'
+import userRouter from './routes/user.router.js'
 const PORT=8080;
+const app = express()
 
-const app=express()
+app.use(express.json({limit :'5mb'}))
 
-app.use('/api/users',userRoutes)
+app.use('/api/user',userRouter)
 
-
-
-app.listen(PORT,()=>{
-    console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(PORT,(req,res)=>{
+    console.log(`Server is running at http:${PORT}`);
 })
