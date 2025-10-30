@@ -5,6 +5,7 @@ const PORT=8080;
 
 const app = express()
 
+//connecting to mongodb
 mongoose.connect('mongodb://localhost:27017/new_db').then(()=>{
     console.log("Data base Connected")
 }).catch((error)=>{
