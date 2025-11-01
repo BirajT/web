@@ -4,8 +4,8 @@ const router=express.Router()
 
 router.get('/',getAll)
 router.get('/:id',getById)
-router.get('/',create)
+router.post('/',create)
 router.get('/',update)
-router.get('',remove)
+router.delete('/',remove)
 
 export default router
