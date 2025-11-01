@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from 'dotenv'
 import userRoutes from "./routes/user.router.js"
+import productRoutes from "./routes/product.router.js"
 import {connectDB} from "./config/db.config.js"
 dotenv.config()
 const PORT=process.env.PORT;
@@ -10,7 +11,9 @@ connectDB()
 
 app.use(express.json({ limit: "5mb" }));
 
+app.use('.api/products',productRoutes)
 app.use('/api/users',userRoutes)
+
 
 app.get('/',(req,res)=>{
     res.status(200).json({
