@@ -1,26 +1,8 @@
 import mongoose from "mongoose";
-
+import User from "../models/user.models/js"
 const users = [];
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-});
-
-
-
-// model
-const User = mongoose.model('user',userSchema)
+c
 
 //* get all users
 export const getAll = async (req, res) => {
