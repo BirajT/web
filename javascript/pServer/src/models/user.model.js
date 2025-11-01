@@ -1,4 +1,4 @@
-
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -12,12 +12,14 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-});
+    },
+    
+},{timestamps:true});
 
 
 
-// model
-const User = mongoose.model('user',userSchema)
+// mode user = await User.findOne({email,_id:id})
+    // const user = await User.findById(id)l
+const User = mongoose.model('user', userSchema)
 
 export default User

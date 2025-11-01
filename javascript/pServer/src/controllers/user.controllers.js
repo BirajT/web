@@ -1,8 +1,6 @@
-import mongoose from "mongoose";
-import User from "../models/user.models/js"
-const users = [];
 
-c
+import User from "../models/user.model.js";
+
 
 //* get all users
 export const getAll = async (req, res) => {
@@ -25,6 +23,9 @@ export const getById = async (req, res) => {
   try {
     const { id } = req.params;
 
+    // const user = users.find((user) => user.id.toString() === id);
+
+    // const user = await User.findOne({email,_id:id})
     const user = await User.findById(id)
 
     if (!user) {
@@ -105,7 +106,10 @@ export const remove = async (req, res) => {
   try {
     const { id } = req.params;
 
-   await User.findByIdAndDelete(id)
+    // const user = users.find((user) => user.id.toString() === id);
+
+    // const user = await User.findOne({_id:id})
+   const user = await User.findByIdAndDelete(id)
 
     if (!user) {
       res.status(404).json({
