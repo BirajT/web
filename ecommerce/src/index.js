@@ -1,18 +1,21 @@
 import express from 'express'
-import { connectDb } from './config/db.config.js'
+import { connectDB } from './config/db.config.js'
+import authRoutes from "./routes/auth.routes.js"
 
 const app=express()
 const PORT=8080
 
 connectDB()
 
+app.use(express.json({limit:'10mb'}))
+
 app.get('/',(req,res)=>{
     res.status(200).json({
         message:"Server is up and running"
-    })
-})
+    });
+});
 
-app.use('/api/auth',)
+app.use('/api/auth',authRoutes)
 
 //error handling middleware
 app.use((error,req,res,next)=>{
@@ -29,4 +32,4 @@ app.use((error,req,res,next)=>{
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running at http://localhost:${PORT}`);
-})
+});

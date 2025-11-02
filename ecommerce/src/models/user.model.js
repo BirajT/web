@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import {GENDER,USER_ROLE} from "../constants/enums.constants.js";
 
-const userSchema=new mongooose.Schema({
+const userSchema=new mongoose.Schema({
     first_name:{
         type:String,
         required:[true,"First name is required"],
@@ -32,4 +33,6 @@ const userSchema=new mongooose.Schema({
         }
     },
 })
-export default 
+
+const User =mongoose.model('user',userSchema)
+export default User
