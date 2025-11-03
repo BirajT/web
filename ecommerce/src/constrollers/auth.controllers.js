@@ -1,5 +1,6 @@
 import { USER_ROLE } from "../constants/enums.constants.js";
 import USER from "../models/user.model.js";
+import { hashPassword ,comparePassword} from "../utils/bcrypt.utils.js";
 
 // register user
 export const register = async (req, res, next) => {
@@ -7,11 +8,17 @@ export const register = async (req, res, next) => {
     console.log(req.body)
     const { first_name, last_name, email, password, phone, gender } = req.body;
 
+    if(!password){
+      throw new Error("passsword is required")
+    }
+    
+const hashedPass=await hashPassword(password)
+console.log(hashedPass);
     const user = await USER.create({
       first_name,
       last_name,
       email,
-      password,
+      password:hashedPass,
       phone,
       gender,
       role: USER_ROLE.USER,
@@ -47,9 +54,9 @@ export const login = async (req, res, next) => {
       const error = new Error("Credentials does not match");
       throw error;
     }
-    //! compare password
-    const isMatch = password === user.password;
-    //! throw error if pass do not match
+    // compare password
+    const isMatch = await comparePassword(password,user.password)
+    // throw error if pass do not match
     if (!isMatch) {
       const error = new Error("Credentials does not match");
       throw error;
@@ -64,6 +71,36 @@ export const login = async (req, res, next) => {
   }
 };
 
-// change password
 
-// forgot password
+
+export const changePassword=async(req,res,next)=>{
+  try{
+    const{email,oldpassword,newpassword}=req.body;
+
+    if(!email ||!oldpassword ||!newpassword){
+      const error=new Error("Email oldpassword and new password are required")
+      throw error;
+    }
+
+    const user=await USER.findOne({email})
+    if(!user){
+      console.log("USer not found");
+    }
+
+    if(user.password!==oldpassword)
+    {
+      console.log("Old password is incorrect");
+    }
+    if(user.password===oldpassword)
+    {
+      user.password=newpassword;
+    }
+    res.status(200).josn({
+      message:"password change sucessfully"
+    })
+    
+  }catch(error){
+    next(error)
+  }
+}
+

@@ -17,7 +17,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/auth',authRoutes)
 
-//error handling middleware
+//error handling middleware 
 app.use((error,req,res,next)=>{
     const message=error?.message || "something went wrong"
 
