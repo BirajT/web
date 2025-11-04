@@ -2,9 +2,10 @@ import express from 'express'
 import { connectDB } from './config/db.config.js'
 import authRoutes from "./routes/auth.routes.js"
 import categoryRoutes from "./routes/category.routes.js"
+import { errorHandler } from './middlewares/error_handler.middleware.js'
 
 const app=express()
-const PORT=8080
+const PORT=process.env.PORT || 8080
 
 connectDB()
 
@@ -19,17 +20,7 @@ app.get('/',(req,res)=>{
 app.use('/api/categories',categoryRoutes)
 app.use('/api/auth',authRoutes)
 
-//error handling middleware 
-app.use((error,req,res,next)=>{
-    const message=error?.message || "something went wrong"
-
-    res.status(500).json({
-        message,
-        status:"error",
-        sucess:false,
-        data:null
-    })
-})
+app.use(errorHandler)
 
 
 app.listen(PORT,()=>{

@@ -1,15 +1,19 @@
 import { USER_ROLE } from "../constants/enums.constants.js";
 import USER from "../models/user.model.js";
+import { asyncHandler } from "../utils/asynchandler.utils.js";
 import { hashPassword ,comparePassword} from "../utils/bcrypt.utils.js";
 
 // register user
-export const register = async (req, res, next) => {
-  try {
+export const register =  asyncHandler(async(req,res,next)=>{
     console.log(req.body)
     const { first_name, last_name, email, password, phone, gender } = req.body;
 
     if(!password){
-      throw new Error("passsword is required")
+      // const error=new Error("passsword is required")
+      // error.statusCode=400,
+      // error.status='fail'
+      // throw error
+      throw new CustomError("password is required",400)
     }
     
 const hashedPass=await hashPassword(password)
@@ -29,10 +33,8 @@ console.log(hashedPass);
       status: "succes",
       data: user,
     });
-  } catch (error) {
-    next(error);
-  }
-};
+  })
+
 
 // login
 export const login = async (req, res, next) => {
@@ -40,26 +42,22 @@ export const login = async (req, res, next) => {
     //!email pass
     const { email, password } = req.body;
     if (!email) {
-      const error = new Error("email is required");
-      next(error);
+      throw new CustomError("email is required",400)
     }
     if (!password) {
-      const error = new Error("password is required");
-      throw error;
+      throw new CustomError("password is required",400)
     }
     //! check/get user by email
     const user = await USER.findOne({ email });
     // throw error if user not found
     if (!user) {
-      const error = new Error("Credentials does not match");
-      throw error;
+      throw new CustomError("user is required",400)
     }
     // compare password
     const isMatch = await comparePassword(password,user.password)
     // throw error if pass do not match
     if (!isMatch) {
-      const error = new Error("Credentials does not match");
-      throw error;
+      throw new CustomError("credential does not match",400)
     }
       //! login success
       res.status(201).json({
