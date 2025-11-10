@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 import { MONGO_CONFIG } from './config.js';
 
+import dotenv from "dotenv";
 
+dotenv.config(); 
 // mongo db connection
 
 
