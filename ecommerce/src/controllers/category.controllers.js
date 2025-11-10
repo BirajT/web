@@ -1,7 +1,8 @@
 import CATEGORY from "../models/category.model.js"
+import { asyncHandler } from "../utils/asynchandler.utils.js";
 
-export const createCategory=async(req,res,next)=>{
-    try {
+export const createCategory=asyncHandler(async(req,res,next)=>{
+  
           console.log("Request body:", req.body);
         const {name,description}=req.body
         if(!name)
@@ -17,26 +18,20 @@ export const createCategory=async(req,res,next)=>{
       status: "success",
       data: category,
     });
+})
 
-    } catch (error) {
-        next(error)
-    }
-}
-
-export const getAll=async(req,res,next)=>{
-    try {
+export const getAll=asyncHandler(async(req,res,next)=>{
+  
         const categories=await CATEGORY.find({})
         res.status(200).json({
             data:categories,
             message:"Category fetched",
             status:"sucess"
         })
-    } catch (error) {
-        next(error)
-    }
-}
-export const getCategoryById=async(req,res,next)=>{
-    try{
+     
+})
+export const getCategoryById=asyncHandler(async(req,res,next)=>{
+  
     const {id}=req.params;
     const category=await CATEGORY.findById({id})
     id(!category)
@@ -49,14 +44,11 @@ export const getCategoryById=async(req,res,next)=>{
         status:"sucess",
         data:category
     })
-}catch(error)
-{
-    next(error)
-}
-}
+})
 
-export const updateCategory = async (req, res, next) => {
-  try {
+
+export const updateCategory = asyncHandler(async (req, res, next) => {
+  
     const { id } = req.params;
     const { name, description } = req.body;
 
@@ -67,8 +59,7 @@ export const updateCategory = async (req, res, next) => {
     );
 
     if (!category) {
-      const error = new Error("Category not found");
-      throw error;
+      throw new customError("category required",400)
     }
 
     res.status(200).json({
@@ -76,11 +67,8 @@ export const updateCategory = async (req, res, next) => {
       status: "success",
       data: category,
     });
-  } catch (error) {
-    next(error);
-  }
-};
-
+  } 
+)
 
 export const deleteCategory = async (req, res, next) => {
   try {
@@ -101,3 +89,15 @@ export const deleteCategory = async (req, res, next) => {
     next(error);
   }
 };
+
+
+    const file=req.file
+          const category=new CATEGORY({name,description})
+        const {name,description}=req.body
+
+        if(file){
+          const {path,public_id}=await uploadToCloud(file.path,"/categories")
+          category.image={
+            path,public_id,
+          };
+        }

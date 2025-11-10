@@ -1,0 +1,27 @@
+
+import  express  from 'express';
+import { create, getAll, getById, remove, update } from '../controllers/brand.controller.js';
+import { uploadFile } from '../middlewares/multer.middleware.js';
+
+
+const router = express.Router()
+
+const upload = uploadFile()
+
+// create
+router.post('/', upload.single('image'), create)
+
+// update
+router.put('/:id', upload.single('image'), update)
+
+// get all 
+router.get('/',getAll)
+
+// get by id
+router.get('/:id', getById);
+
+// delete
+router.delete('/:id',remove)
+
+
+export default router
