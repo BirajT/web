@@ -71,6 +71,7 @@ export const login = asyncHandler(async (req, res, next) => {
     throw new CustomError("Credentials does not match", 400);
   }
 
+
   //! token
   const access_token = generateJWTToken({
     _id: user._id,
@@ -81,13 +82,16 @@ export const login = asyncHandler(async (req, res, next) => {
   })
   //
   //! login success
-  res.status(201).json({
-    message: "login success",
-    data: user,
-    access_token
-  });
-});
-
-// change password
-
-// forgot password
+  
+ res.cookie("access_token", access_token, {
+  httpOnly: true,
+  sameSite: "none",
+  secure: process.env.NODE_ENV === "development" ? false : true,
+  maxAge: parseInt(process.env.COOKIE_EXPIRY || "7") * 24 * 60 * 60 * 1000, // 7 days default
+})
+.status(201).json({
+  message: "Login success",
+  data: user,
+  access_token
+})
+})
