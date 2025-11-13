@@ -9,10 +9,10 @@ const router = express.Router()
 const upload = uploadFile()
 
 // create
-router.post('/', upload.single('image'), create)
+router.post('/', upload.single('image'),authenticate([USER_ROLE.ADMIN]), create)
 
 // update
-router.put('/:id', upload.single('image'), update)
+router.put('/:id', upload.single('image'),authenticate([USER_ROLE.ADMIN]), update)
 
 // get all 
 router.get('/',getAll)

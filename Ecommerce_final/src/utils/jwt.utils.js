@@ -4,7 +4,15 @@ import { jwt_config } from '../config/config.js'
 
 
 export const generateJWTToken = (payload) => {
-    return jwt.sign(payload, jwt_config.secret, {
-        expiresIn:jwt_config.expires_in
-    })
-}
+  return jwt.sign(payload, jwt_config.secret, {
+    expiresIn: jwt_config.expires_in,
+  });
+};
+
+export const verifyToken = (token) => {
+  try {
+    return jwt.verify(token, jwt_config.secret);
+  } catch (error) {
+    throw new CustomError("jwt error", 500);
+  }
+};

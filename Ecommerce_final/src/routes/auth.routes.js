@@ -13,5 +13,6 @@ router.post('/register', uploader.single('profile_image'), register)
 // login
 router.post('/login',login)
 
+router.post('/logout',logout)
 
 export default router

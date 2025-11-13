@@ -1,4 +1,4 @@
-import { USER_ROLE } from "../constants/enums.constants.js";
+import { USER_ROLE } from "../constants/enums.constants.js"; 
 import CustomError from "../middlewares/error_handler.middleware.js";
 import USER from "../models/user.model.js";
 import { asyncHandler } from "../utils/asynchandler.utils.js";
@@ -94,4 +94,19 @@ export const login = asyncHandler(async (req, res, next) => {
   data: user,
   access_token
 })
+})
+
+
+//logout
+export const logout=asyncHandler(async(req,res)=>{
+  res.clearCookie('acess_token',{
+    httpOnly:true,
+    samesite:'none',
+    secure:process.env.NODE_ENV==="development"?false:true,
+  })
+  res.status.json({
+    message:"logged out sucessfully!!",
+    status:'sucess',
+    data:null
+  })
 })
