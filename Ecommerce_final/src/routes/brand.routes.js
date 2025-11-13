@@ -2,7 +2,8 @@
 import  express  from 'express';
 import { create, getAll, getById, remove, update } from '../controllers/brand.controller.js';
 import { uploadFile } from '../middlewares/multer.middleware.js';
-
+import { authenticate } from "../middlewares/authentication.middleware.js";
+import { USER_ROLE } from "../constants/enums.constants.js";
 
 const router = express.Router()
 
