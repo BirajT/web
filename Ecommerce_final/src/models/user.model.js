@@ -5,7 +5,8 @@ import { GENDER, USER_ROLE } from "../constants/enums.constants.js";
 const userSchema = new mongoose.Schema({
     first_name: {
         type: String,
-        required:[true,'First name is requird'],
+        required:[true,'First name is requird']
+        ,
     },
      last_name: {
         type: String,

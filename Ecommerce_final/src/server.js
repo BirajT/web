@@ -7,6 +7,7 @@ import { errorHandler } from './middlewares/error_handler.middleware.js';
 import authRoutes from './routes/auth.routes.js'
 import categoryRoutes from './routes/category.routes.js'
 import brandRoutes from './routes/brand.routes.js'
+import wishlistRoutes from './routes/wishlist.routes.js'
 
 const PORT = process.env.PORT || 5000;
 
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 app.use('/api/auth',authRoutes)
 app.use('/api/brand',brandRoutes)
 app.use('/api/category',categoryRoutes)
+app.use('/api/wishlist',wishlistRoutes)
 
 // error handling middleware
 app.use(errorHandler);
