@@ -72,6 +72,10 @@ export const login = asyncHandler(async (req, res, next) => {
   }
 
 
+  await sendEmail({
+    to:user?.email
+  })
+
   //! token
   const access_token = generateJWTToken({
     _id: user._id,
