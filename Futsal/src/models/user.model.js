@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
+import { USER_ROLE } from "../constants/enums.constants.js"
 
-const userSchema=new mongooseSchema({
+const userSchema=new mongoose.Schema({
     name:{
         type:String,required:true
     },
@@ -9,9 +10,14 @@ const userSchema=new mongooseSchema({
     },
     password:{
         type:String,required:true
+    },
+    role:{
+        type:String,
+        enum:Object.values(USER_ROLE),
+        default:USER_ROLE.USER
     }
 
 },{timestamps:true})
 
-const userModel=mongoose.model('user',userSchema)
-export default userModel
+const User=mongoose.model('user',userSchema)
+export default User

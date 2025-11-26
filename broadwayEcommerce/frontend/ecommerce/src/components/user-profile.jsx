@@ -13,11 +13,11 @@ export const UserProfile=({user})=>{
     );
 };
 
-export const multiply=({mul})=>{
+export const Multiply=({mul})=>{
     return(
         <div>
             <p>MULTIPLY</p>
-            <p>{mul.no}*{mul.i}=mul.soln</p>
+            <p>{mul.no}*{mul.n}={mul.soln}</p>
         </div>
     )
 }

@@ -11,6 +11,7 @@ import categoryRoutes from './routes/category.routes.js'
 import brandRoutes from './routes/brand.routes.js'
 import productRoutes from './routes/product.routes.js'
 import wishlistRoutes from './routes/wishlist.routes.js'
+import orderRoutes from './routes/order.routes.js'
 
 const PORT = process.env.PORT || 5000;
 
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 app.use('/api/auth',authRoutes)
 app.use('/api/cart',cartRoutes)
 app.use('/api/brands',brandRoutes)
+app.use('/api/orders',orderRoutes)
 app.use('/api/products',productRoutes)
 app.use('/api/wishlists',wishlistRoutes)
 app.use('/api/categories',categoryRoutes)

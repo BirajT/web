@@ -26,8 +26,9 @@ const cartSchema = new mongoose.Schema({
             }
         }
     ],
+    // total_amt
 
-}, { timestamps:true })
+}, { timestamps:true})
 
 
 const Cart = mongoose.model('cart',cartSchema)

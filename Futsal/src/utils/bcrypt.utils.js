@@ -1,12 +1,11 @@
-import bcrypt from 'bcryptjs'
+import bcrypt from "bcryptjs"
 
-export const hashPassword = async(password) => {
+export const hashPassword=async(password)=>{
     try {
-        const salt  = await bcrypt.genSalt(10)
+        const salt=await bcrypt.genSalt(10)
         return await bcrypt.hash(password,salt)
-        
     } catch (error) {
-        throw new Error('bcrypt error')
+       throw new Error('bcypt error') 
     }
 }
 
