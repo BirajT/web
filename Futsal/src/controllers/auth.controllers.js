@@ -50,7 +50,7 @@ export const register = asyncHandler(async (req, res, next) => {
 
   res.status(201).json({
     message: "Account created",
-    status: "succes",
+    status: "success",
     data: user,
   });
 });

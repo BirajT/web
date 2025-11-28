@@ -24,5 +24,15 @@ const futsalSchema=new mongoose.Schema({
     price_per_hour:{
         type:Number,
         required:[true,"price is required"]
+    },
+    futsal_image:{
+        type:{
+            path:String,
+            public_id:String
+        }
     }
-})
+},{timestamps:true})
+
+//creating futsal model
+const Futsal=mongoose.model('futsal',futsalSchema)
+export default Futsal
