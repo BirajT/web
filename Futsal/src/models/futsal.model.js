@@ -14,11 +14,11 @@ const futsalSchema=new mongoose.Schema({
         required:[true,"number is required"]
     },
     opening_time:{
-        type:Date,
+        type:String,
         required:[true,"time is required"]
     },
     closing_time:{
-        type:Date,
+        type:String,
         required:[true,"time is required"]
     },
     price_per_hour:{
