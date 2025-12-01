@@ -115,7 +115,7 @@ export const remove = asyncHandler(async(req,res)=> {
 
     res.status(200).json({
         message: 'Brand deleted',
-        staus: 'success',
+        status: 'success',
         data:null
     })
 
