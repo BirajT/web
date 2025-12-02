@@ -10,3 +10,15 @@ export const GENDER = {
     OTHER:'Other'
     
 }
+
+export const PAYMENT_STATUS = {
+    PENDING: 'Pending',
+    PAID: "paid",
+    FAILED: "failed"
+}
+
+export const BOOKING_STATUS={
+    PENDING: 'Pending',
+    CONFIRM: 'Confirm',
+    COMPLETED:'Canceled '
+}
