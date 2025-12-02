@@ -1,5 +1,6 @@
 export const USER_ROLE={
     USER:'USER',
+    OWNER:'OWNER',
     ADMIN:"ADMIN",
 }
 

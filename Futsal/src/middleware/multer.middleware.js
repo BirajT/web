@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import CustomError from "./error_handler.middleware.js";
 
+
 export const uploadFile = (dir = "/") => {
   const upload_path = "./uploads" + dir;
   const file_size = 5 * 1024 * 1024; // 5MB

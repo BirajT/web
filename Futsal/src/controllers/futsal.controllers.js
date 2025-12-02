@@ -1,7 +1,8 @@
-import CustomError from "../middleware/error_handler.middleware"
-import Futsal from "../models/futsal.model"
-import { asyncHandler } from "../utils/asynchandler.utils"
+import CustomError from "../middleware/error_handler.middleware.js"
+import Futsal from "../models/futsal.model.js"
+import { asyncHandler } from "../utils/asynchandler.utils.js"
 import { uploadToCloud,deleteFile } from "../utils/cloudinary.utils.js"
+
 
 
 const dir='/futsals'
@@ -105,7 +106,7 @@ export const remove=asyncHandler(async(req,res)=>{
         throw new CustomError("Futsal not found",404)
     }
 
-    if(futsal_image.image)
+    if(futsal.futsal_image)
     {
          await deleteFile(futsal.futsal_image?.public_id)
     }
