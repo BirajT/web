@@ -1,5 +1,6 @@
 import { USER_ROLE } from "../constants/enums.constants.js";
 import CustomError from "../middleware/error_handler.middleware.js";
+import User from "../models/user.model.js";
 import USER from "../models/user.model.js";
 import { asyncHandler } from "../utils/asynchandler.utils.js";
 import { comparePassword, hashPassword } from "../utils/bcrypt.utils.js";
@@ -128,5 +129,61 @@ export const logout = asyncHandler(async (req, res) => {
 
 
 // change password
+export const changePassword=asyncHandler(async(req,res)=>{
+  const {email,oldpassword,newpassword}=req.body
+
+  if (!email) {
+    throw new CustomError("Email is required", 400);
+  }
+  if (!oldpassword) {
+    throw new CustomError("Old password is required", 400);
+  }
+  if (!newpassword) {
+    throw new CustomError("New password is required", 400);
+  }
+
+  const user=await User.findOne({email})
+  if(!user)
+  {
+    throw new CustomError("USer not found",404)
+  }
+
+const isMatch=await comparePassword(oldpassword,user.password)
+  if(!isMatch)
+  {
+    throw new CustomError("Password does not match",400)
+  }
+
+
+    user.password=await hashPassword(newpassword)
+    await user.save();
+
+  await sendEmail({
+    to:user.email,
+    subject:"password changed sucessfully",
+    html:passwordChangedSuccessEmail()
+  })
+
+   res.status(200).json({
+    message: "Password changed successfully",
+    status: "success"
+  });
+});
 
 // forgot password
+export const forgotPassword=asyncHandler(async(req,res)=>{
+  const {email,newpassword}=req.body
+
+  if (!newpassword) {
+    throw new CustomError("New password is required", 400);
+  }
+    if (!email) {
+    throw new CustomError("Email is required", 400);
+  }
+  const user=await User.findOne({email})
+  if(!user)
+  {
+    throw new CustomError("user not found",404)
+  }
+  
+})
