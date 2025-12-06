@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/asynchandler.utils.js";
 import Booking from "../models/booking.model.js";
 import CustomError from "../middleware/error_handler.middleware.js";
+import { sendEmail } from "../utils/nodemailer.utils.js";
 
 export const getAll=asyncHandler(async(req,res)=>{
     const bookings=await Booking.find({})
@@ -61,6 +62,13 @@ export const create=asyncHandler(async(req,res)=>{
 
     await booking.save();
 
+    await sendEmail({
+        to:booking.user.email,
+        subject:"Your futsal has been booked",
+        html:`Your futsal has been booked on ${booking.futsal.name} `
+
+    })
+
     res.status(201).json({
         message:'Futsal Booked',
         status:"success",
@@ -100,6 +108,11 @@ export const update=asyncHandler(async(req,res)=>{
 
     await booking.save();
 
+    await sendEmail({
+        to:booking.user.email,
+        subject:"Booking Updated Successfully "
+    })
+
     res.status(200).json({
         message: "Booking updated",
         status: "success",
@@ -110,7 +123,7 @@ export const update=asyncHandler(async(req,res)=>{
 
 export const remove=asyncHandler(async(req,res)=>{
     const {id}=req.params;
-    const booking=await Booking.findById(id)
+    const booking=await Booking.findById(id).populate("user").populate("futsal")
 
     if(!booking)
     {
@@ -118,6 +131,13 @@ export const remove=asyncHandler(async(req,res)=>{
     }
 
     await booking.deleteOne();
+
+    await sendEmail({
+        to:booking.user.email,
+        subject:"Booking canceled",
+        html:`your booking on ${booking.user.name} has been canceled`,
+        
+    })
 
     res.status(200).json({
         message:"booking deleted",
