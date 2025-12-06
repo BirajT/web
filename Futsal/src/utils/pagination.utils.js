@@ -1,5 +1,3 @@
-
-
 export const getPagination = (total_count, current_page ,limit ) => {
     
 
