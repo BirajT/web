@@ -1,18 +1,60 @@
 import CustomError from "../middleware/error_handler.middleware.js"
 import Futsal from "../models/futsal.model.js"
 import { asyncHandler } from "../utils/asynchandler.utils.js"
-import { uploadToCloud,deleteFile } from "../utils/cloudinary.utils.js"
+import { uploadToCloud,deleteFile } from "../utils/cloudinary.utils.js";
+import {getPagination} from "../utils/pagination.utils.js"
 
 
 
 const dir='/futsals'
 
 export const getAll=asyncHandler(async(req,res)=>{
-    const futsals=await Futsal.find({})
+
+    const{query,
+        page=1,
+        limit=10,
+        minPrice,
+        maxPrice}=req.query
+
+        const currentPage = Number(page);
+        const perPageLimit = Number(limit);
+        const skip = (currentPage - 1) * perPageLimit;
+
+        let filter={}
+
+        if(query){
+            filter.$or=[
+                {
+                name:{
+                    $regex:query,
+                    $options:"i",
+                    }},
+                {address:{
+                    $regex:query,
+                    $options:"i",
+                }}    
+                ,  
+                    ]
+                }
+
+            if (minPrice || maxPrice) {
+            filter.price_per_hour = {};
+  
+            if (minPrice) filter.price_per_hour.$gte = minPrice;
+            if (maxPrice) filter.price_per_hour.$lte = maxPrice;
+}    
+    const futsals=await Futsal.find(filter)
+    .sort({ createdAt: -1 }).skip(skip).limit(perPageLimit);
+    
+
+    const total_counts=await Futsal.countDocuments(filter)
+    const pagination=getPagination(total_counts,currentPage,perPageLimit)
+    
     res.status(200).json({
         message:"Futsal fetched",
         status:"success",
         data:futsals,
+        pagination
     });
 });
 
