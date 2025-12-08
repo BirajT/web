@@ -1,37 +1,28 @@
-import './App.css'
-import { UserProfile } from './components/user-profile.jsx'
-import { Multiply } from './components/user-profile.jsx'
+import "./App.css";
+import About from "./pages/about";
+import Home from "./pages/home";
+import Service from "./pages/service";
+import { BrowserRouter, Routes , Route ,Link} from "react-router";
 
 function App() {
-  return (   
-
+  return (
     <div>
-      <h1>Hello World </h1>
-      <ul>
-        <li>Components</li>
-        <img src="/vite.svg" alt="" />
-        <li>JSX</li>
-        <li>Props</li>
-      </ul>
-      <UserProfile user={{name:'john' ,email:'john@gmail.com',phoneno:'9841070000'}} />
-      <UserProfile user={{name:'Alice',email:'alice@gmail.com'}}/>
-      <multiply mul={{no:'2',i:''}} />
+      <BrowserRouter>
+        <div>
+          <Link to={'/'}>Home</Link>
+          <Link to={'/about-us'}>About Us</Link>
+          <Link to={'/service'}>Our Services</Link>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/service" element={<Service />} />
+          <Route path="/products/:id" element={<div>Product detil page</div>} />
+          <Route path="*" element={ <h1>Page Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
-function Mul()
-{
-  for( let i=0;i<=10;i++)
-    m=2*i
-  return(
-    <div>
-      
-      <multiply mul={{no:2,n:i,soln:m}}/>
-    </div>
-  )
-}
-
-
-
-export default App
+export default App;

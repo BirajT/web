@@ -21,3 +21,4 @@ export const Multiply=({mul})=>{
         </div>
     )
 }
+
