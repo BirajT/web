@@ -25,6 +25,8 @@ const Home = () => {
         <li>2. componentDidUpdate - updating phase</li>
         <li>3. componentWillUnmount - deleting phase</li>
         <li>Conditional Rendering</li>
+        <li>Events</li>
+        <li >click , change , hover , submit</li>
       </ul>
       {/* child a  -> clild b  ..... z */}
       <button onClick={() => { setShow((prev) => !prev) }}>toggle</button>
