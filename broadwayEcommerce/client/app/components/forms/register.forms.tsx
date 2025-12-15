@@ -1,70 +1,102 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from "react";
+
+type RegisterFormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  gender: string;
+  phone: string;
+  address: string;
+};
 
 const RegisterForm = () => {
+  const [formData, setFormData] = useState<RegisterFormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    gender: "",
+    phone: "",
+    address: "",
+  });
+
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("submit", formData);
+  };
+
   return (
     <div className="w-full max-w-md">
-      <form className="flex flex-col gap-4">
+      <form onSubmit={onSubmit} className="flex flex-col gap-4">
 
         {/* First Name */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="firstName" className="font-semibold text-sm">
-            First Name
-          </label>
+          <label className="font-semibold text-sm">First Name</label>
           <input
-            id="firstName"
             type="text"
+            name="firstName"
             placeholder="John"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           />
         </div>
 
         {/* Last Name */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="lastName" className="font-semibold text-sm">
-            Last Name
-          </label>
+          <label className="font-semibold text-sm">Last Name</label>
           <input
-            id="lastName"
             type="text"
+            name="lastName"
             placeholder="Doe"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           />
         </div>
 
         {/* Email */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="font-semibold text-sm">
-            Email
-          </label>
+          <label className="font-semibold text-sm">Email</label>
           <input
-            id="email"
             type="email"
+            name="email"
             placeholder="john@gmail.com"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           />
         </div>
 
         {/* Password */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="password" className="font-semibold text-sm">
-            Password
-          </label>
+          <label className="font-semibold text-sm">Password</label>
           <input
-            id="password"
             type="password"
+            name="password"
             placeholder="******"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           />
         </div>
 
         {/* Gender */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="gender" className="font-semibold text-sm">
-            Gender
-          </label>
+          <label className="font-semibold text-sm">Gender</label>
           <select
-            id="gender"
+            name="gender"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
@@ -73,50 +105,35 @@ const RegisterForm = () => {
           </select>
         </div>
 
-        {/* Profile Picture */}
+        {/* Phone */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="profilePic" className="font-semibold text-sm">
-            Profile Picture
-          </label>
+          <label className="font-semibold text-sm">Phone Number</label>
           <input
-            id="profilePic"
-            type="file"
-            className="border px-3 py-2 rounded outline-blue-400"
-          />
-        </div>
-
-        {/* Phone Number */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="phone" className="font-semibold text-sm">
-            Phone Number
-          </label>
-          <input
-            id="phone"
             type="tel"
+            name="phone"
             placeholder="+977 9800000000"
             className="border px-3 py-2 rounded outline-blue-400"
+            onChange={onChange}
           />
         </div>
 
         {/* Address */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="address" className="font-semibold text-sm">
-            Address
-          </label>
+          <label className="font-semibold text-sm">Address</label>
           <textarea
-            id="address"
+            name="address"
             placeholder="Enter your address"
             className="border px-3 py-2 rounded outline-blue-400 resize-none"
+            onChange={onChange}
           />
         </div>
 
-        {/* Submit Button */}
-        <button className="bg-blue-500 text-white py-2 rounded font-semibold mt-4">
+        <button className="bg-blue-500 text-white py-2 rounded font-semibold mt-4 hover:bg-blue-600">
           Register
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;
