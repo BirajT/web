@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 const LoginForm = () => {
 
-    const {register,handleSubmit,reset,formState:{errors},}=useForm({
+    const {register,handleSubmit,reset,formState:{errors},}=useForm({   
         defaultValues:{
             email:"",
             password:''
@@ -20,6 +20,7 @@ const LoginForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-5 '>
+
                 {/* email input */}
                 <div className='flex flex-col gap-1'>
                     <label className='text-[16px] font-semibold' htmlFor={'email'}>Email</label>
@@ -30,6 +31,7 @@ const LoginForm = () => {
                 {/* password  */}
                 <div className='flex flex-col gap-1'>
                     <label className='text-[16px] font-semibold' htmlFor={'password'}>Password</label>
+                    
                     <input {...register('password')} 
                      className='border border-gray-400 rounded-sm px-2 py-3
                       focus:outline-blue-400' id={'password'} type={'password'} placeholder={'passsword'} />
