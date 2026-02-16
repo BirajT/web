@@ -1,0 +1,84 @@
+.home-page {
+  padding: 20px 0;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 18px;
+}
+
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 2;
+  min-width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.price-input {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.futsals-grid {
+  margin-bottom: 30px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.page-info {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 28px;
+  }
+  
+  .search-filters {
+    flex-direction: column;
+  }
+  
+  .search-input,
+  .price-input {
+    width: 100%;
+  }
+}

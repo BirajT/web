@@ -1,0 +1,99 @@
+.futsal-details-page {
+  padding: 20px 0;
+}
+
+.futsal-details-card {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.futsal-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.futsal-image-large {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.futsal-image-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image-large {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  color: #ccc;
+}
+
+.futsal-details-info h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  margin: 15px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.detail-item strong {
+  color: #2c3e50;
+}
+
+.price-highlight {
+  font-size: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.btn-large {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.booking-form-section {
+  border-top: 2px solid #eee;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.booking-form-section h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.total-price {
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
+  color: #4CAF50;
+}
+
+@media (max-width: 768px) {
+  .futsal-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .futsal-image-large {
+    height: 250px;
+  }
+}

@@ -1,0 +1,27 @@
+.add-futsal-page {
+  padding: 20px 0;
+}
+
+.add-futsal-card {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.add-futsal-card h1 {
+  margin-bottom: 30px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.image-preview {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 300px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

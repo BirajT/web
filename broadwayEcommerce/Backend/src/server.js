@@ -12,6 +12,7 @@ import brandRoutes from './routes/brand.routes.js'
 import productRoutes from './routes/product.routes.js'
 import wishlistRoutes from './routes/wishlist.routes.js'
 import orderRoutes from './routes/order.routes.js'
+import cors from 'cors'
 
 const PORT = process.env.PORT || 5000;
 
@@ -21,6 +22,7 @@ const app = express();
 connectDB()
 
 //? using middlewares
+app.use(cors({origin:"*"}))
 app.use(cookieParser())
 app.use(express.json({ limit: '10mb' }))
 app.use('/api/uploads',express.static('uploads'))
