@@ -10,3 +10,8 @@ export const GENDER = {
     OTHER:'Other'
     
 }
+
+export const AVAILABILITY={
+    AVAILABLE:"Available",
+    UNAVAILABLE:"Unavailable"
+}
