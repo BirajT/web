@@ -2,12 +2,17 @@ import 'dotenv/config'
 import express from "express"
 import { connectDB } from './config/db.config.js'
 import { errorHandler } from "./middleware/error_handler.middleware.js"
+import authRoutes from './routes/auth.routes.js'
+
 const PORT=process.env.PORT
 const app=express()
 
 connectDB()
 
 app.use(express.json())
+
+app.use('/api/auth',authRoutes)
+
 
 app.get('/',(req,res)=>{
     res.status(200).json({

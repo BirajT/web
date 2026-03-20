@@ -1,5 +1,5 @@
-import CustomError from "../middleware/error_handler.middleware";
-import { asyncHandler } from "../utils/asynchandler.utils";
+import CustomError from "../middleware/error_handler.middleware.js";
+import { asyncHandler } from "../utils/asynchandler.utils.js";
 
 export const getAll=asyncHandler(async(req,res,next)=>{
     const users=await UserActivation.find({});
@@ -18,5 +18,6 @@ export const getById=asyncHandler(async(req,res,next)=>{
 
     res.status(200).json({
         message:'user by id',
-        data:user
+        data:user,
     })
+})
