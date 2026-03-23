@@ -9,3 +9,13 @@ export const cloudinary_config = {
     api_secret: process.env.CLOUDINARY_SECRET_KEY
     
 }
+
+export const jwt_config = {
+    secret: process.env.JWT_SECRET,
+    expires_in : process.env.JWT_EXPIRES_IN
+}
+
+export const nodemailer_config = {
+    user:process.env.SMTP_USER,
+    pass:process.env.SMTP_PASS,
+}
