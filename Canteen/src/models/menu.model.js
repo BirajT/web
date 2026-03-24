@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { AVAILABILITY } from '../constants/enums.constants'
+import { AVAILABILITY } from '../constants/enums.constants.js'
 
 const menuSchema=new mongoose.Schema({
     name:{
