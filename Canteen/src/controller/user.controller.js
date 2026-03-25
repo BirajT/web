@@ -2,7 +2,7 @@ import CustomError from "../middleware/error_handler.middleware.js";
 import { asyncHandler } from "../utils/asynchandler.utils.js";
 
 export const getAll=asyncHandler(async(req,res,next)=>{
-    const users=await UserActivation.find({});
+    const users=await User.find({});
     res.status(200).json({
         message:"user fetched",
         data:users,
