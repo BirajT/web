@@ -1,4 +1,6 @@
 import { asyncHandler } from "../utils/asynchandler.utils.js";
+import CustomError from "../middleware/error_handler.middleware.js";
+
 
 export const getAll=asyncHandler(async(req,res,next)=>{
    const menus=await Menus.find({})
@@ -20,6 +22,10 @@ export const getById=asyncHandler(async(req,res,next)=>{
 export const create=asyncHandler(aync(req,res,next)=>{
     
     const {name,price,category,}=req.body;
-    
+    const file=req.file;
+
+    if(!file){
+        throw new CustomError("image is required",400)
+    }
     
 })
