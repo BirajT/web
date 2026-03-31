@@ -21,4 +21,3 @@ export const getById=asyncHandler(async(req,res,next)=>{
         data:user,
     })
 })
-
