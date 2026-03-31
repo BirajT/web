@@ -1,5 +1,6 @@
 import CustomError from "../middleware/error_handler.middleware.js";
 import { asyncHandler } from "../utils/asynchandler.utils.js";
+import User from "../models/user.model.js";
 
 export const getAll=asyncHandler(async(req,res,next)=>{
     const users=await User.find({});
