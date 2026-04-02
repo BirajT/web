@@ -70,7 +70,7 @@ export const login = asyncHandler(async (req, res, next) => {
   const user = await USER.findOne({ email });
   // throw error if user not found
   if (!user) {
-    throw new CustomError("Credentials does not match", 400);
+    throw new CustomError("user not found", 400);
   }
   //! compare password
   const isMatch = await comparePassword(password, user.password);
@@ -141,7 +141,7 @@ export const changePassword=asyncHandler(async(req,res)=>{
     throw new CustomError("New password is required", 400);
   }
 
-  const user=await User.findOne({email})
+  const user=await USER .findOne({email})
   if(!user)
   {
     throw new CustomError("USer not found",404)
@@ -160,7 +160,6 @@ const isMatch=await comparePassword(oldpassword,user.password)
   await sendEmail({
     to:user.email,
     subject:"password changed sucessfully",
-    html:passwordChangedSuccessEmail()
   })
 
    res.status(200).json({
