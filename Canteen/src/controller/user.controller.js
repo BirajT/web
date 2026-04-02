@@ -22,3 +22,17 @@ export const getById=asyncHandler(async(req,res,next)=>{
         data:user,
     })
 })
+
+export const remove=asyncHandler(async(req,res,next)=>{
+    const {id}=req.params
+    const user=await User.findByIdAndDelete(id)
+
+    if(!user){
+        throw new CustomError("users not found")
+    }
+
+    res.status(200).json({
+        message:'deleted',
+        data:null
+    })
+})
