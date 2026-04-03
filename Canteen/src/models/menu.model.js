@@ -6,18 +6,15 @@ const menuSchema=new mongoose.Schema({
         type:String,
         required:[true,"name is required"]
     },
-    _id:{
-        type:string,
-        required:[true,"id is required"]
-    },
     price:{
-        type:string,
+        type:Number,
         required:[true,"price is required"]
     },
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"category",
         required:true
+
     },
     image:{
         type: {
