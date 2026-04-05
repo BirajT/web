@@ -3,7 +3,7 @@ import Menu from "../models/menu.model.js";
 
 export const createOrder = async (req, res) => {
   try {
-    const { items } = req.body; // [{ itemId, quantity }]
+    const { items } = req.body; // [{ itemId, quantity 
 
     let totalAmount = 0;
 
