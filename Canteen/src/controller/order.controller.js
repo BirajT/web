@@ -3,20 +3,13 @@ import Menu from "../models/menu.model.js";
 
 export const createOrder = async (req, res) => {
   try {
-    const { items } = req.body; // [{ itemId, quantity 
+    const { menu,quantity } = req.body;
 
     let totalAmount = 0;
+    totalAmount=
 
-    // calculate total price
-    for (const item of items) {
-      const menuItem = await Menu.findById(item.itemId);
 
-      if (!menuItem) {
-        return res.status(404).json({ message: "Item not found" });
-      }
-
-      totalAmount += menuItem.price * item.quantity;
-    }
+    
 
     const order = await Order.create({
       userId: req.user._id,

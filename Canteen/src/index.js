@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/menu',menuRoutes)
+app.use('/api/order')
+
 
 app.get('/',(req,res)=>{
     res.status(200).json({
