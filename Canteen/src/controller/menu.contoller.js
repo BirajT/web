@@ -4,19 +4,24 @@ import Menu from "../models/menu.model.js";
 import { uploadToCloud } from "../utils/cloudinary.utils.js";
 
 export const getAll=asyncHandler(async(req,res,next)=>{
-   const menus=await Menus.find({})
+   const menus=await Menu.find({}).populate('category', 'name')
     res.status(200).json({
-        message:"user fetched",
+        message:"menus fetched",
         data:menus,
     });
 })
 
 export const getById=asyncHandler(async(req,res,next)=>{
     const {id}=req.params
-    const menu=await Menu.findOne({_id:id})
+    const menu=await Menu.findById(id)
+
+    if(!menu){
+        throw new CustomError("menu not found",404)
+    }
+
     res.status(200).json({
         message:"menu fetched",
-        data:"menu"
+        data:menu
     })
 })
 
@@ -29,27 +34,27 @@ export const create=asyncHandler(async(req,res,next)=>{
         throw new CustomError("image is required",400);
     }
 
-    const menu=new Menu*({
+    const menu=new Menu({
         name,
         price,
         category
     });
 
-    if (file) {
+   
         const { path, public_id } = await uploadToCloud(
-          image.path,
-          "/profile_images"
+          file.path,
+          "/menu_images"
         );
-        user.profile_image = {
+        menu.image = {
           path,
           public_id,
         };
-      }
+
 
  await menu.save();
 
   res.status(201).json({
-    message: "Account created",
+    message: "Menu created",
     status: "success",
     data: menu,
   });
@@ -60,7 +65,7 @@ export const remove=asyncHandler(async(req,res,next)=>{
     const menu=await Menu.findByIdAndDelete(id)
 
     if(!menu){
-        throw new CustomError("users not found")
+        throw new CustomError("menu not found",404)
     }
 
     res.status(200).json({
