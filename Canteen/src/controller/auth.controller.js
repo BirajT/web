@@ -39,14 +39,14 @@ export const register = asyncHandler(async (req, res, next) => {
     };
   }
 
+  await user.save();
+
   //* send email
- await  sendEmail({
+  await sendEmail({
     to: user.email,
     subject: 'Account created',
     html: registerSuccessEmail(),  
   })
-
-  await user.save();
 
   res.status(201).json({
     message: "Account created",
@@ -57,8 +57,6 @@ export const register = asyncHandler(async (req, res, next) => {
 
 // login
 export const login = asyncHandler(async (req, res, next) => {
-  //!email pass
-  console.log(req.body);
   const { email, password } = req.body;
   if (!email) {
     throw new CustomError("Email is required", 400);
@@ -99,10 +97,10 @@ export const login = asyncHandler(async (req, res, next) => {
   //! login success
   res.cookie('access_token', access_token, {
     httpOnly: true,
-    sameSite: 'none',
-    secure: process.env.NODE_ENV === 'development' ? false : true,
+    sameSite: 'lax',
+    secure: false,
     maxAge: parseInt(process.env.COOKIE_EXPIRY || '7') * 24 * 60 * 60 * 1000
-  }).status(201).json({ 
+  }).status(200).json({ 
     message: "login success",
     data: user,
     access_token
@@ -115,9 +113,9 @@ export const login = asyncHandler(async (req, res, next) => {
 export const logout = asyncHandler(async (req, res) => {
   
   res.clearCookie('access_token', {
-     httpOnly: true,
-    sameSite: 'none',
-    secure: process.env.NODE_ENV === 'development' ? false : true, 
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: false,
   })
   res.status(200).json({
     message: 'Logged out successfully!!',
@@ -159,7 +157,8 @@ const isMatch=await comparePassword(oldpassword,user.password)
 
   await sendEmail({
     to:user.email,
-    subject:"password changed sucessfully",
+    subject:"Password changed successfully",
+    html:"<h1>Your password has been changed successfully</h1>"
   })
 
    res.status(200).json({
@@ -172,16 +171,29 @@ const isMatch=await comparePassword(oldpassword,user.password)
 export const forgotPassword=asyncHandler(async(req,res)=>{
   const {email,newpassword}=req.body
 
+  if (!email) {
+    throw new CustomError("Email is required", 400);
+  }
   if (!newpassword) {
     throw new CustomError("New password is required", 400);
   }
-    if (!email) {
-    throw new CustomError("Email is required", 400);
+
+  const user=await USER.findOne({email})
+  if(!user){
+    throw new CustomError("User not found",404)
   }
-  const user=await User.findOne({email})
-  if(!user)
-  {
-    throw new CustomError("user not found",404)
-  }
-  
+
+  user.password=await hashPassword(newpassword)
+  await user.save()
+
+  await sendEmail({
+    to:user.email,
+    subject:"Password reset successfully",
+    html:"<h1>Your password has been reset successfully</h1>"
+  })
+
+  res.status(200).json({
+    message:"Password reset successfully",
+    status:"success"
+  })
 })
