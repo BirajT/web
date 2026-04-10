@@ -15,3 +15,10 @@ export const AVAILABILITY={
     AVAILABLE:"Available",
     UNAVAILABLE:"Unavailable"
 }
+
+export const STATUS={
+    PENDING:"Pending",
+    PREPARING:"Preparing",
+    COMPLETED:"Completed",
+    CANCELLED:"Cancelled"
+}
