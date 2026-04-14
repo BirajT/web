@@ -14,6 +14,6 @@ export const verifyToken = (token) => {
   try {
     return jwt.verify(token, jwt_config.secret);
   } catch (error) {
-    throw new CustomError("jwt error", 500);
+    throw new CustomError("Unauthorized. Invalid or expired token", 401);
   }
 };
