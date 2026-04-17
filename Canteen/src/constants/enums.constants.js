@@ -22,3 +22,9 @@ export const STATUS={
     COMPLETED:"Completed",
     CANCELLED:"Cancelled"
 }
+
+
+export const OFFER={
+    DISCOUNT:'Discount',
+    
+}
