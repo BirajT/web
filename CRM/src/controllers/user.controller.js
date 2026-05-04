@@ -1,5 +1,5 @@
 import User from "../models/user.model";
-
+import CustomError from "../middleware/error_handler.middleware.js"
 export const getAll = async (req, res, next) => {
   try {
     const users = await User.find({});
@@ -38,7 +38,7 @@ export const getById = async (req, res, next) => {
 
 //! update user profile
 export const updateProfile = async (req, res, next) => {
-  try {
+  
     // 
     const {id} = req.params
     const { first_name, last_name, phone, gender } = req.body
@@ -46,7 +46,7 @@ export const updateProfile = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(id, { first_name, last_name, phone, gender }, { new: true })
     
     if (!user) {
-      throw new Error('User not found')
+      throw new CustomError('User not found')
     }
 
     res.status(200).json({
@@ -54,8 +54,5 @@ export const updateProfile = async (req, res, next) => {
       data:user
     })
 
-  } catch (error) {
-    next(error)
-  }
-  
+
 }
