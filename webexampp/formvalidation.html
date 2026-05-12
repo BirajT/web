@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    
+    <script>
+   function validate(){
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let password=document.getElementById("pass").value;
+
+    if(name=="" || email=="" || password=="")
+   {
+    alert("all fields are not filled")
+    return false;
+   }
+
+   }
+
+
+</script>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        name: <input type="text" id="name"><br><br>
+        email: <input type="email" id="email"><br><br>
+        password: <input type="password" id="pass"> <br><br>
+        
+        Gender: <br>
+        <input type="radio" name="gender" value="male">male <br>
+        <input type="radio" name="gender" value="female">female <br>
+<br>
+        Country:
+        <select id="country">
+            <option value="nepal">Nepal</option>
+            <option value="india">India</option>
+
+        </select>
+<br><br>
+        <input type="Submit" value="Submit">
+    </form>
+</body>
+</html>

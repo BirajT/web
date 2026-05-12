@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validate(){
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let password=document.getElementById("pass").value;
+    let country = document.getElementById("country").value;
+
+    if(name=="" || email=="" || password==""){
+        alert("All fields must be filled out")
+         return false
+    }
+    console.log(`name=${name}`)
+    console.log(`email=${email} `)
+    console.log(`password=${password}`)
+    console.log(`country=${country}`)
+    return true;
+}
+</script>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        name: <input type="text" id="name"> <br><br>
+        email: <input type="email" id="email"> <br><br>
+        password: <input type="password" id="pass"> <br><br>
+
+        Gender:  <br>
+        <input type="radio" name="gender" value="male">male
+        <input type="radio" name="gender" value="female">female 
+
+        <select name="country" id="Country">
+            <option value="nepal">Nepal</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+        </select>
+        <br>
+        <input type="Submit" value="submit">
+    </form>
+</body>
+</html>
