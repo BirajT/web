@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 const LoginPage = () => {
   return (
-    <main className='h-full w-full flex justify-center '>
-      <h1>Login</h1><br />
+    <main className='h-full w-full flex justify-center items-center '>
+      <h1>Login</h1>
       <LoginForms/>
     </main>
   )

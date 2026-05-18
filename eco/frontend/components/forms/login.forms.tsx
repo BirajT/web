@@ -18,7 +18,7 @@ const LoginForms = () => {
         <input id='password' type='password' placeholder='password'/>
       </div>
 
-      <button>Login</button>
+      
     </form>
 
     </div>
